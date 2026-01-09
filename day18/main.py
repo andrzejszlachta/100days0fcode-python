@@ -47,14 +47,27 @@ colors  = ["red","green","blue","orange","purple","pink","yellow"]
 
 bob = Turtle()
 bob.speed('fastest')
-bob.pensize(10)
+# bob.pensize(10)
 screen = Screen()
 
-turns = [0, 90, 180, 270]
-for _ in range(100):
-    bob.color(random.choice(colors))
-    direction = random.choice(turns)
-    bob.setheading(direction)
-    bob.forward(50)
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rand_color = '#%02x%02x%02x' % (r,g,b)
+    return rand_color
+
+# turns = [0, 90, 180, 270]
+# for _ in range(100):
+#     bob.color(random_color())
+#     direction = random.choice(turns)
+#     bob.setheading(direction)
+#     bob.forward(50)
+
+for seq in range(360):
+    bob.setheading(seq)
+    if seq % 5 == 0:
+        bob.color(random_color())
+        bob.circle(100)
 
 screen.exitonclick()
